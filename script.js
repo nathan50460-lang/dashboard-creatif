@@ -305,6 +305,141 @@ const CHARS_DEF = [
 
 
 // ═══════════════════════════════════════════════════════════════
+// RESOURCE STORIES — lore + image path per resource
+// ═══════════════════════════════════════════════════════════════
+const RESOURCE_STORIES = {
+  // s01
+  "Are.na":                     { image:null, story:"BASE DE DONNÉES NON-COMMERCIALE. Archives visuelles organisées par des humains, sans filtre algorithmique. Chaque canal est un réseau neuronal artisanal en activité permanente." },
+  "ArtStation":                 { image:null, story:"PIPELINES VISUELS DÉCLASSIFIÉS. Direction artistique professionnelle pour jeux et films. Les blueprints de Cyberpunk 2077 et Dune sont accessibles ici, directement depuis leurs créateurs." },
+  "Cargo Collective":           { image:null, story:"SIGNAL ALTERNATIF. Portfolios bruts d'artistes underground. Esthétiques risquées, non filtrées par l'algorithme. La contre-culture numérique tient ses archives ici." },
+  "Smithsonian Open Access":    { image:null, story:"MÉMOIRE NUMÉRISÉE DE L'HUMANITÉ. 2,8 millions d'artefacts en domaine public. Gravures victoriennes, planches anatomiques, archives scientifiques — tout est libre d'accès et réutilisable." },
+  "Internet Archive — Pulp":    { image:null, story:"FUTURS IMPOSSIBLES ARCHIVÉS. Couvertures de magazines sci-fi 1930–1970. Rockets chromées, planètes impossibles — un optimisme naïf sur le futur qui n'a jamais existé mais peut encore se matérialiser." },
+  "Flickr Commons":             { image:null, story:"FONDS PHOTOGRAPHIQUES INSTITUTIONNELS. NASA, bibliothèques nationales, musées. L'argentique pré-numérique encode des textures de lumière impossibles à recréer synthétiquement." },
+  "BLDGBLOG":                   { image:null, story:"GÉOGRAPHIES FICTIVES. Un blog sur des villes impossibles, des déserts habités, des topographies qui n'existent pas encore. Chaque article reconfigure la façon de percevoir l'espace." },
+  "Lospec":                     { image:null, story:"BASE DE DONNÉES CHROMATIQUE. Palettes pixel art curées par la communauté mondiale. Choisir une palette c'est choisir un univers entier — chaque contrainte de couleur est une architecture de perception." },
+  "DeviantArt — Sci-fi Groups": { image:null, story:"ARCHIVES COMMUNAUTAIRES. Groupes actifs sur le retrofuturisme, le space opera, le cyberpunk depuis l'an 2000. Des milliers d'artistes auto-publiés maintiennent le signal fort." },
+  // s02
+  "Civitai":                    { image:null, story:"DÉPÔT DE FORMES SYNTHÉTIQUES. Des LoRA compressent des styles entiers en quelques megabytes. MOEBIUS.safetensors encode 50 ans d'une œuvre. Chaque checkpoint est un univers téléchargeable." },
+  "Hugging Face":               { image:null, story:"HUB OPEN SOURCE MONDIAL. FLUX, SDXL, SD3 en accès libre. Des Spaces permettent d'expérimenter sans installation locale. La frontière entre recherche académique et création s'efface ici." },
+  "ComfyUI":                    { image:null, story:"INTERFACE NODE-BASED. Chaque nœud est une opération sur les données visuelles. Les workflows complexes deviennent des graphes de pensée visuelle — plus puissant qu'A1111 pour les pipelines avancés." },
+  "OpenArt.ai":                 { image:null, story:"DICTIONNAIRE VISUEL VIVANT. Des milliers de prompts avec leurs outputs référencés. Apprendre à prompter c'est apprendre à parler une langue qui n'existait pas il y a 3 ans." },
+  "Lexica.art":                 { image:null, story:"MOTEUR INVERSÉ. Trouve l'image générée et le prompt exact qui l'a produite. Reverse-engineering de n'importe quel style visuel. Déconstruire, réinjecter, transformer." },
+  "Krea.ai":                    { image:null, story:"CANVAS EN TEMPS RÉEL. L'image se génère pendant que tu dessines. Itération instantanée. La distance entre l'idée et sa forme visuelle se mesure désormais en secondes." },
+  "r/StableDiffusion":          { image:null, story:"NŒUD COMMUNAUTAIRE CENTRAL. Actualités, workflows, comparatifs en temps réel. Les découvertes techniques y circulent avant d'être documentées dans les wikis officiels." },
+  "CLIP Interrogator (HF)":     { image:null, story:"ANALYSE INVERSÉE. Upload une image, reçois le prompt qui l'aurait générée. Indispensable pour déconstruire un style visuel existant et le réintégrer dans un pipeline de génération." },
+  // s03
+  "Piskel":                     { image:null, story:"ÉDITEUR NATIF WEB. Gratuit, animation intégrée, sans installation. Idéal pour prototyper des sprites rapidement avant de passer sur Aseprite. La porte d'entrée du pixel art." },
+  "Aseprite":                   { image:null, story:"STANDARD DE L'INDUSTRIE. 20$ ou compilable depuis le dépôt GitHub officiel. Couches, animations, palettes indexées. L'outil de référence des artistes pixel professionnels." },
+  "AdamCYounis (YouTube)":      { image:null, story:"TRANSMISSION PÉDAGOGIQUE. Les tutoriels les plus clairs du domaine pixel art. Environnements, personnages, animations — une progression rigoureuse accessible à tous les niveaux." },
+  "Brandon James Greer (YouTube)":{ image:null, story:"CONTRAINTES CRÉATIVES. Focus sur les limitations de palette, l'esthétique Game Boy, les couleurs vintages. La contrainte comme moteur de créativité plutôt que limitation." },
+  "Itch.io — Free Assets":      { image:null, story:"MARCHÉ LIBRE. Des milliers d'assets pixel art gratuits en téléchargement direct. Tilesets sci-fi, environnements dark, sprites cyberpunk. Prototypage immédiat sans contrainte de droit." },
+  "Kenney.nl":                  { image:null, story:"DOMAINE PUBLIC TOTAL. Assets de haute qualité libres de droits. La référence universelle pour le prototypage rapide et les game jams de 48 heures." },
+  "Planet Minecraft":           { image:null, story:"LABORATOIRE COMMUNAUTAIRE. Texture packs, maps, builds — un espace pour réinterpréter l'esthétique Minecraft selon d'autres grammaires visuelles et d'autres mondes." },
+  // s04
+  "Moebius — Site officiel":    { image:null, story:"FONDATEUR DU LANGAGE VISUEL. Archives, prints, biographie. Jean Giraud a redéfini l'espace de la science-fiction visuelle. Point de départ obligatoire pour toute direction artistique rétro-futuriste sérieuse." },
+  "Heavy Metal Magazine Archive":{ image:null, story:"MAGAZINE LÉGENDAIRE. Moebius, Druillet, Bilal — les pères fondateurs de la BD science-fiction. Archives 1977–1990 scannées. Un concentré d'esthétiques impossibles qui ont défini notre imaginaire collectif." },
+  "Paleofuture":                { image:null, story:"ARCHÉOLOGIE DU FUTUR. Des visions du futur qui ne se sont pas réalisées. Atomic age, flying cars, colonies spatiales. Un futur de papier toujours disponible — recyclable en matière première créative." },
+  "r/Retrofuturism":            { image:null, story:"COMMUNAUTÉ ACTIVE. Images, discussions, références en flux continu. La mémoire collective du futur tel qu'il était imaginé avant qu'il ne devienne passé désuet." },
+  "r/ImaginaryFuturism":        { image:null, story:"CONCEPT ART FILTRÉ. Qualité garantie par les upvotes communautaires. Les meilleurs artistes de concept art science-fiction y partagent leur processus et leurs œuvres." },
+  "NASA Image & Video Library": { image:null, story:"ARCHIVES SPATIALES AUTHENTIQUES. Photos Apollo, rovers martiens, nébuleuses. Domaine public total. La réalité cosmique comme source d'inspiration directe et irremplaçable." },
+  "Worldbuilding Stack Exchange":{ image:null, story:"INGÉNIERIE FICTIVE SÉRIEUSE. Questions sur la physique, les sociétés, les écologies des mondes imaginaires. Un think tank pour la cohérence interne des univers fictionnels." },
+  "Standard Ebooks":            { image:null, story:"BIBLIOTHÈQUE HAUTE QUALITÉ. Strugatsky, Philip K. Dick, Ursula K. Le Guin en EPUB soigné et gratuit. La littérature science-fiction comme fondement conceptuel de toute direction artistique." },
+  // s05
+  "SomaFM":                     { image:null, story:"RADIO SPATIALE 24/7. Drone Zone, Space Station, Suburbs of Goa — des ambiances éditées par des humains passionnés. Le fond sonore idéal pour les sessions de création longues et immersives." },
+  "Mynoise.net":                { image:null, story:"GÉNÉRATEURS ULTRA-PARAMÉTRABLES. Space Odyssey, Binaural Drones, pluie calibrée. Chaque curseur est un paramètre d'immersion. Personnalisation totale de l'environnement sonore de travail." },
+  "Freesound.org":              { image:null, story:"BIBLIOTHÈQUE CC. Des millions de samples glitch, sci-fi, ambiance sous Creative Commons. La matière première sonore de tes projets, légalement libre de réutilisation." },
+  "Bandcamp — Ambient/Drone":   { image:null, story:"ÉCOUTE ET SOUTIEN DIRECT. Brian Eno, Stars of the Lid, Tim Hecker, Grouper. L'ambient et le drone dans leur forme la plus pure, avec la rémunération directe des artistes." },
+  "Free Music Archive":         { image:null, story:"LICENCES LIBRES. Musique filtrable par genre sous Creative Commons. Usage commercial possible sur certaines licences. La bibliothèque sonore légale pour projets personnels et commerciaux." },
+  "Suno.ai":                    { image:null, story:"GÉNÉRATION MUSICALE IA. Freemium. Crée des ambiances instrumentales en quelques secondes. Bandes sons uniques pour projets personnels sans nécessiter de compétences musicales." },
+  "Audacity":                   { image:null, story:"ÉDITEUR OPEN SOURCE. Couper, coller, layerer, exporter. Gratuit, stable, multiplateforme depuis 20 ans. L'outil de base pour toute manipulation sonore sérieuse." },
+  "Archive.org — 78rpm":        { image:null, story:"ENREGISTREMENTS VINTAGE. Sons authentiques 1900–1950 sur cylindres et disques 78 tours. Lo-fi réel — une patine analogique impossible à synthétiser numériquement avec les mêmes accidents parfaits." },
+  // s06
+  "Know Your Meme":             { image:null, story:"DOCUMENTATION EXHAUSTIVE. Origines, évolutions, variantes de chaque format méméique. Comprendre l'archéologie d'un mème c'est comprendre une unité de culture partagée globalement." },
+  "Kapwing":                    { image:null, story:"ÉDITEUR WEB POLYVALENT. Vidéo, image, templates, sous-titres automatiques. Freemium généreux pour les créations de mèmes avec un vrai travail visuel et éditorial." },
+  "Imgflip":                    { image:null, story:"GÉNÉRATEUR CLASSIQUE. Templates communautaires + éditeur de légendes rapide. Directement dans le navigateur, sans installation. Pour les formats texte/image standards." },
+  "r/AdvancedFunny":            { image:null, story:"MÈMES TRAVAILLÉS VISUELLEMENT. L'absurde de haute qualité. La frontière floue entre humour involontaire et art conceptuel assumé. Chaque post est une micro-œuvre." },
+  "r/surrealmemes":             { image:null, story:"DÉSTRUCTURATION FORMELLE. Mèmes glitchés, dadaïstes, logiques de rêve appliquées au format. La mécanique du mème poussée jusqu'à son point de rupture esthétique maximale." },
+  "Tumblr":                     { image:null, story:"ARCHIVE CULTURELLE VIVANTE. Mèmes artistiques, cultures niches, esthétiques en cours de formation. Une mémoire de l'internet pré-algorithme encore consultable et active." },
+  "Canva":                      { image:null, story:"DESIGN MAÎTRISÉ. Typographie, composition, grilles professionnelles. Pour les mèmes qui exigent une vraie intention visuelle — la frontière entre post et affiche graphique." },
+  // s07
+  "Itch.io":                    { image:null, story:"PLATEFORME INDIE DE RÉFÉRENCE. Jeux publiés, game jams, expérimentation sans contrainte commerciale. Des milliers de créateurs qui bâtissent des univers en dehors des circuits traditionnels." },
+  "Game Maker's Toolkit (YouTube)":{ image:null, story:"ANALYSE DE MÉCANIQUES. La meilleure chaîne de game design du web. Déconstruction des systèmes, des boucles de jeu, des intentions derrière chaque choix de design notable." },
+  "GDevelop":                   { image:null, story:"MOTEUR SANS CODE REQUIS. Jeux web, desktop, mobile sans programmation obligatoire. Adapté aux prototypes rapides et aux expérimentations de concept avant développement complet." },
+  "Phaser.js":                  { image:null, story:"FRAMEWORK JAVASCRIPT. Le moteur derrière tes projets Tower Defense et Puzzle Donjon. Performance web-native, vaste communauté, documentation complète et exemples actifs." },
+  "Twine":                      { image:null, story:"FICTION INTERACTIVE. Aucun code requis. Des branches, des états, des récits non-linéaires. La forme narrative la plus proche du jeu vidéo sans développement technique préalable." },
+  "Ludum Dare":                 { image:null, story:"GAME JAM MAJEURE. 48 heures pour créer un jeu seul à partir d'un thème imposé. La contrainte temporelle absolue comme moteur créatif. Participer, c'est déjà publier." },
+  "OpenGameArt.org":            { image:null, story:"ART LIBRE CC. Ressources visuelles et sonores sous Creative Commons pour prototypes et jeux terminés. Pour les projets qui exigent une direction artistique dès le stade de prototype." },
+  // s08
+  "Obsidian":                   { image:null, story:"SECOND CERVEAU LOCAL. Notes Markdown, graphe de connaissances, plugins extensibles. Tout reste sur ta machine. L'architecture neuronale de ta créativité, sans dépendance cloud." },
+  "Notion":                     { image:null, story:"WORKSPACE INTÉGRÉ. Freemium généreux. Roadmaps, bases de données, wikis d'univers, calendriers. La plateforme de référence pour organiser les projets créatifs complexes." },
+  "Milanote":                   { image:null, story:"MOODBOARDS VISUELS. Interface whiteboard avec colonnes. Pensée spatiale et non-linéaire. Idéal pour les phases d'exploration créative avant de structurer une direction." },
+  "Trello":                     { image:null, story:"KANBAN GRATUIT. Un board par projet : idée → en cours → terminé. Simple, visuel, efficace. La base de toute gestion de projet créatif sans surcharge cognitive." },
+  "GitHub":                     { image:null, story:"VERSIONING ET HÉBERGEMENT. Pour les projets code. GitHub Pages pour déployer gratuitement. L'histoire de chaque modification est conservée indéfiniment — un journal de bord technique." },
+  "Logseq":                     { image:null, story:"ALTERNATIVE OBSIDIAN OPEN SOURCE. Pensée en blocs liés. Graphe de connaissances persistant. Une approche différente de la structure qui convient mieux à certains modes de pensée." },
+  // s09
+  "Pinterest":                  { image:null, story:"MOTEUR DE RECHERCHE VISUEL. Pas un réseau social — un moteur de découverte d'images. 5–10 pins/jour, mélange créations et curation. Le trafic organique s'accumule à long terme." },
+  "Cara.app":                   { image:null, story:"RÉSEAU ANTI-SCRAPING IA. Communauté d'artistes qui protège ses œuvres de l'entraînement des modèles. La démarche éthique y est valorisée — un signal émergent fort." },
+  "Instagram":                  { image:null, story:"GRIDS THÉMATIQUES. La cohérence visuelle prime sur la fréquence. Reels pour les vidéos process. La présentation en série cohérente est plus puissante qu'un post isolé." },
+  "TikTok":                     { image:null, story:"VIDÉO PROCESS. Timelapse pixel art, génération SD en direct, making-of. L'audience réagit fort aux contenus de fabrication. La découverte algorithmique peut être massive et inattendue." },
+  "YouTube":                    { image:null, story:"VIDÉO LONGUE FORME. Ambiances de 1–3 heures, devlogs, tutoriels approfondis. L'audience est très fidèle et cherche activement ce type de contenu contemplatif." },
+  "Linktree":                   { image:null, story:"HUB CENTRAL. Un lien unique pour toutes tes plateformes. La destination à partager dans chaque bio. Gratuit et suffisant pour centraliser une présence multi-plateforme." },
+  // s10
+  "The Marginalian":            { image:null, story:"CONNEXIONS INATTENDUES. Essais sur art, science, poésie et philosophie de la créativité. Maria Popova tisse des liens entre des domaines qui semblent étrangers — lecture hebdomadaire recommandée." },
+  "Alan Watts — Archive.org":   { image:null, story:"PHILOSOPHIE AUDIO LIBRE. Conférences sur le bouddhisme et la culture occidentale. Gratuit sur Archive.org. Un fond sonore philosophique pour les sessions créatives longues et méditatives." },
+  "Aeon Magazine":              { image:null, story:"ESSAIS LONGS. Philosophie, science, culture. Un des meilleurs magazines en ligne. La pensée profonde comme contrepoids nécessaire à la consommation rapide d'images et de contenus courts." },
+  "The Long Now Foundation":    { image:null, story:"PENSÉE LONGUE. Séminaires sur la civilisation, le futur à 10 000 ans, les systèmes complexes. L'antidote à la pensée court-terme — reconfigurer l'échelle temporelle de toute création." },
+  "r/Solarpunk":                { image:null, story:"UTOPIE ACTIVE. Esthétique et philosophie écologique futuriste. Un imaginaire positif du futur possible. La contre-proposition au cyberpunk dystopique — le futur qu'on veut construire." },
+  "Terence McKenna — YouTube":  { image:null, story:"CONSCIOUSNESS EXPLORER. Conférences sur conscience, art, langage, temps et psychédéliques. Une vision radicalement différente de la relation entre l'esprit humain et l'acte de création." },
+  "Ursula K. Le Guin":          { image:null, story:"FICTION COMME PHILOSOPHIE. Essais sur le langage, la fiction, l'utopie. La Carrier Bag Theory of Fiction reconfigure la structure du récit héroïque traditionnel. Incontournable." },
+  // s11
+  "Marginalia Search":          { image:null, story:"INTERNET ALTERNATIF. Retourne uniquement des petits sites, blogs indépendants, pages oubliées. Ce que Google cache sous des milliards de pages commerciales — l'internet authentique." },
+  "Wayback Machine":            { image:null, story:"ARCHÉOLOGIE WEB. Sites des années 90–2000. GIFs animés, layouts cassés, HTML brut. L'esthétique early-web comme source d'inspiration rétro-futuriste directe et intacte." },
+  "TV Tropes":                  { image:null, story:"GRAMMAIRE NARRATIVE. Conventions et archétypes du storytelling dans tous les médias. Schizo Tech, Desert Punk, Cyber Punk — chaque trope est un outil narratif réutilisable." },
+  "The Useless Web":            { image:null, story:"ART WEB PUR. Sites inutiles et expérimentaux — l'absurde comme forme artistique. Cliquer aléatoirement c'est traverser un musée invisible, non cartographié et non monétisé." },
+  "ASCII Art Archive":          { image:null, story:"ESTHÉTIQUE TERMINALE. Art ASCII exhaustif. L'image construite caractère par caractère — une contrainte radicale qui force la stylisation absolue et révèle l'essence de toute forme." },
+  "Glitch.com":                 { image:null, story:"EXPÉRIMENTATION WEB LIBRE. Projets interactifs, art algorithmique, weird web. Une plateforme pour créer et explorer des expériences web non-conventionnelles en temps réel." },
+  "Wikipedia Article Aléatoire":{ image:null, story:"MACHINE À SÉRENDIPITÉ. Cliquer 10 fois. Noter les 3 qui inspirent. Les connexions inattendues entre des sujets distants sont la matière première de la créativité transversale." },
+  // s12
+  "Cassette Futurism":          { image:null, story:"LE FUTUR DES ANNÉES 80. VHS, chromes, synthétiseurs, terminaux verts. Un imaginaire technologique chaud et analogique — l'époque où le futur semblait proche, tangible et lumineux." },
+  "Liminal Spaces":             { image:null, story:"ESPACES DE TRANSITION. Parkings vides, couloirs nocturnes, halls d'hôtel déserts. La nostalgie d'un lieu familier qui ne l'est plus — entre le souvenir et l'inquiétude douce." },
+  "Dreamcore / Weirdcore":      { image:null, story:"LOGIQUE DE RÊVE. Distorsion de la réalité, surréalisme doux, textures délavées. L'esthétique de la mémoire en train de se désintégrer — entre le beau et l'inquiétant profond." },
+  "Solarpunk":                  { image:null, story:"UTOPIE VERTE. Architecture végétale, lumière chaude, technologie douce. Le futur positif que le cyberpunk n'imagine pas. Le contrepoint nécessaire au dystopique dominant." },
+  "Atompunk":                   { image:null, story:"ANNÉES 50–60, L'ATOME. Expo universelle, optimisme naïf, chromé et lisse. Un futur rétro baigné dans l'espoir de la modernité qui précédait la désillusion politique." },
+  "Brutalist Web Design":       { image:null, story:"BÉTON NUMÉRIQUE. Typographie massive, layouts austères, pas d'ornement superflu. L'architecture numérique comme matière brute et non poncée — l'anti-design comme esthétique assumée." },
+  "Y2K Aesthetic":              { image:null, story:"PLASTIQUE TRANSPARENT. Futurisme 2000, couleurs acides, logos chrome iridescent. L'esthétique d'une époque qui croyait sincèrement que l'avenir serait brillant et sans friction." },
+  "Dieselpunk":                 { image:null, story:"ENTRE-DEUX-GUERRES. Mécanique brutal, huile, vapeur, rivets apparents. Un futur alternatif ancré dans l'industrie lourde du début du 20e siècle — le modernisme comme esthétique de force." },
+  // s13
+  "Rituel de début":            { image:null, story:"PROTOCOLE D'ACTIVATION. SomaFM → Are.na → Obsidian → fermer les notifications. Une séquence de 15 minutes pour calibrer l'état mental avant toute session de création intensive." },
+  "Review hebdomadaire":        { image:null, story:"BILAN SYSTÉMIQUE. Chaque vendredi : Trello + nouvelles références + objectif + WIP publié. Un rituel de 30 minutes qui transforme les semaines fragmentées en progression cohérente mesurable." },
+  "Bilan mensuel":              { image:null, story:"ARCHÉOLOGIE PERSONNELLE. Relire les notes Obsidian du mois. Trouver 3 connexions inattendues. Arrêter quelque chose. Commencer quelque chose. Restructurer l'espace créatif." },
+  "Débloquer la créativité":    { image:null, story:"PROTOCOLE D'URGENCE. Marginalia + mot aléatoire → Heavy Metal → 50 images SD → Alan Watts 20 min. Une séquence pour forcer la déconnexion des patterns habituels de pensée." },
+  "Fin de projet":              { image:null, story:"CLÔTURE RITUELLE. Archiver → 5 lignes sur ce qu'on a appris → publier quelque chose même imparfait → pause obligatoire de 2 jours. Intégrer avant de recommencer le cycle." },
+  // s14
+  "Chroniques d'une planète oubliée":{ image:null, story:"MONDE DOCUMENTÉ. 30 images SD cohérentes + lore 500 mots + ambiance sonore 10 min. Un univers fictif publié comme archive réelle — la fiction comme réalité parallèle attestée." },
+  "Pixel Diary":                { image:null, story:"UN PIXEL ART 64×64 PAR JOUR. 30 jours, 30 émotions, 30 images. La contrainte quotidienne transforme la création en pratique régulière, la pratique en identité artistique durable." },
+  "Le Glitch Museum":           { image:null, story:"EXPOSITION FICTIVE. Un site GitHub Pages avec 20 œuvres SD comme musée imaginaire. La curature et la mise en scène fictionnelle comme acte artistique à part entière." },
+  "Mème Archéologique":         { image:null, story:"FORMAT → PIXEL ART. Prendre un mème existant, le recréer en pixel art avec une chute absurde. Série de 10. Déconstruction et reconstruction de la grammaire culturelle partagée." },
+  "Ambient Game":               { image:null, story:"JEU SANS OBJECTIF. Phaser.js, pixel art, musique ambient, citations. Explorer plutôt que gagner. Le jeu comme espace contemplatif — une méditation interactive non-dirigée." },
+  "LoRA Personnelle":           { image:null, story:"IDENTITÉ SYNTHÉTIQUE. 50 images de ton esthétique personnelle → entraîner une LoRA → DA signature. La boucle est bouclée : tu deviens ton propre modèle générative." },
+  "Sonic Landscape":            { image:null, story:"IMAGE × SON. Visuel SD impossible + bande son Freesound = loop vidéo 3 minutes. Un format court mais dense pour YouTube et TikTok — l'art ambient en format consommable." }
+};
+
+// ═══════════════════════════════════════════════════════════════
+// ENEMIES DEFINITION
+// ═══════════════════════════════════════════════════════════════
+const ENEMIES_DEF = [
+  { id:'bug',     name:'GLITCH_BUG.exe',    sprite:'⚠',  reward:50,
+    intro:'ANOMALIE DÉTECTÉE — UNE ERREUR PARCOURT LE SYSTÈME',
+    attacks:['CORRUPTION +35%','SEGFAULT CRITIQUE','NULL POINTER','STACK OVERFLOW','BUFFER OVERFLOW'] },
+  { id:'crawler', name:'VOID_CRAWLER',      sprite:'◼',  reward:150,
+    intro:'ENTITÉ DU NÉANT NUMÉRIQUE INFILTRÉE',
+    attacks:['REALITY.null','MÉMOIRE VIDÉE','SIGNAL BROUILLÉ','DONNÉES CORROMPUES','BOUCLE INFINIE'] },
+  { id:'daemon',  name:'PHANTOM_DAEMON',    sprite:'⌀',  reward:400,
+    intro:'UN DAEMON FANTÔME PARCOURT LES ARCHIVES',
+    attacks:['TIMEOUT CRITIQUE','DÉNI DE SERVICE','INJECTION DÉTECTÉE','CORE DUMP','KERNEL PANIC'] },
+];
+
+// ═══════════════════════════════════════════════════════════════
 // GAME STATE
 // ═══════════════════════════════════════════════════════════════
 let GAME = {
@@ -561,6 +696,7 @@ function gameTick() {
     updateUI();
   }
   moveEntities();
+  moveEnemy();
 }
 
 
@@ -592,7 +728,7 @@ function renderSections() {
         <span class="sec-toggle" onclick="toggleSec('${s.id}')">[ - ]</span>
       </div>
       <div class="sec-body">
-        <div class="res-grid">${s.resources.map((r, ri) => renderRes(r)).join('')}</div>
+        <div class="res-grid">${s.resources.map((r, ri) => renderRes(r, s.id, ri)).join('')}</div>
         ${s.combos && s.combos.length ? `
           <div class="combos">
             <div class="combos-label">COMBOS</div>
@@ -608,10 +744,10 @@ function renderSections() {
   });
 }
 
-function renderRes(r) {
+function renderRes(r, sectionId, resIndex) {
   const keys = r.keywords && r.keywords.length
     ? `<div class="res-keys">${r.keywords.map(k => `<span>${k}</span>`).join('')}</div>` : '';
-  return `<div class="res">
+  return `<div class="res" onclick="openDetail('${sectionId}',${resIndex})">
     <div class="res-head">
       <div class="res-name">${r.name}</div>
       <div class="res-tag">${r.tag}</div>
@@ -668,6 +804,153 @@ function setupScrollSpy() {
 }
 
 
+// ═══════════════════════════════════════════════════════════════
+// DETAIL PANEL
+// ═══════════════════════════════════════════════════════════════
+function openDetail(sectionId, resIndex) {
+  const section = dashData.sections.find(s => s.id === sectionId);
+  const res = section.resources[resIndex];
+  const extra = RESOURCE_STORIES[res.name] || {};
+
+  // Image area
+  const inner = document.getElementById('detail-img-inner');
+  if (extra.image) {
+    inner.innerHTML = `<img src="${extra.image}" alt="${res.name}" onerror="this.remove()">`;
+  } else {
+    inner.innerHTML = `<span style="position:relative;z-index:3">${res.name[0].toUpperCase()}</span>`;
+  }
+
+  document.getElementById('detail-name').textContent = res.name;
+  document.getElementById('detail-tag-badge').textContent = res.tag;
+  document.getElementById('detail-story').textContent = extra.story || res.desc;
+
+  const keysEl = document.getElementById('detail-keys');
+  keysEl.innerHTML = (res.keywords || []).map(k => `<span>${k}</span>`).join('');
+
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('detail-backdrop').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  document.getElementById('detail-backdrop').classList.remove('open');
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// ENEMY SYSTEM
+// ═══════════════════════════════════════════════════════════════
+let activeEnemy = null;
+let battleEnemy = null;
+let battleHP    = 35;
+let battleActive = false;
+
+function spawnEnemy() {
+  if (document.getElementById('enemy-active')) return;
+  const layer = document.getElementById('char-layer');
+  const def   = ENEMIES_DEF[Math.floor(Math.random() * ENEMIES_DEF.length)];
+  const el    = document.createElement('div');
+  el.className = 'enemy-entity';
+  el.id = 'enemy-active';
+
+  const x = 380 + Math.random() * (window.innerWidth - 520);
+  const y = 100 + Math.random() * (window.innerHeight - 260);
+  el.style.left = x + 'px';
+  el.style.top  = y + 'px';
+
+  el.innerHTML = `<div class="enemy-sprite">${def.sprite}</div>
+    <div class="enemy-label">${def.name}</div>`;
+  el.addEventListener('click', () => openBattle(def));
+  layer.appendChild(el);
+
+  activeEnemy = { el, def, x, y, tx: x, ty: y };
+  setTimeout(() => { if (el.parentElement) { el.remove(); activeEnemy = null; scheduleNextEnemy(); } }, 180000);
+}
+
+function scheduleNextEnemy() {
+  setTimeout(spawnEnemy, 90000 + Math.random() * 90000);
+}
+
+function moveEnemy() {
+  if (!activeEnemy || !activeEnemy.el.parentElement) { activeEnemy = null; return; }
+  const W = window.innerWidth, H = window.innerHeight;
+  if (Math.random() < .015) {
+    activeEnemy.tx = 380 + Math.random() * (W - 520);
+    activeEnemy.ty = 100 + Math.random() * (H - 260);
+  }
+  activeEnemy.x += (activeEnemy.tx - activeEnemy.x) * 0.02;
+  activeEnemy.y += (activeEnemy.ty - activeEnemy.y) * 0.02;
+  activeEnemy.el.style.left = activeEnemy.x + 'px';
+  activeEnemy.el.style.top  = activeEnemy.y + 'px';
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// BATTLE SYSTEM
+// ═══════════════════════════════════════════════════════════════
+function openBattle(def) {
+  if (battleActive) return;
+  battleActive = true;
+  battleEnemy  = def;
+  battleHP     = 35;
+
+  document.getElementById('battle-enemy-sprite').textContent = def.sprite;
+  document.getElementById('battle-enemy-name').textContent   = def.name;
+  document.getElementById('battle-intro').textContent        = def.intro;
+  document.getElementById('battle-result').textContent       = '';
+  document.getElementById('battle-attack-log').textContent   = '';
+  document.getElementById('battle-btn').style.display        = 'block';
+  document.getElementById('battle-hp-fill').style.background = '';
+  updateBattleUI();
+  document.getElementById('battle-popup').classList.add('active');
+}
+
+function updateBattleUI() {
+  document.getElementById('battle-hp-fill').style.width = (battleHP / 35 * 100) + '%';
+  document.getElementById('battle-hp-text').textContent  = battleHP + ' / 35 HP';
+}
+
+function battleClick() {
+  if (battleHP <= 0) return;
+  battleHP--;
+
+  const log = battleEnemy.attacks[Math.floor(Math.random() * battleEnemy.attacks.length)];
+  document.getElementById('battle-attack-log').textContent = log;
+
+  const inner = document.getElementById('battle-inner');
+  inner.classList.remove('battle-hit');
+  requestAnimationFrame(() => inner.classList.add('battle-hit'));
+
+  updateBattleUI();
+
+  if (battleHP <= 0) {
+    const reward = battleEnemy.reward;
+    GAME.points      += reward;
+    GAME.totalPoints += reward;
+
+    document.getElementById('battle-btn').style.display        = 'none';
+    document.getElementById('battle-result').textContent       = `VICTOIRE — +${reward} CYCLES`;
+    document.getElementById('battle-attack-log').textContent   = 'ENNEMI NEUTRALISÉ';
+    document.getElementById('battle-hp-fill').style.background = 'var(--g)';
+    document.getElementById('battle-hp-fill').style.width      = '100%';
+
+    const el = document.getElementById('enemy-active');
+    if (el) el.remove();
+    activeEnemy = null;
+
+    setTimeout(() => {
+      document.getElementById('battle-popup').classList.remove('active');
+      battleActive = false;
+      updateUI();
+      scheduleNextEnemy();
+    }, 2400);
+
+    saveGame();
+    updateUI();
+  }
+}
+
+
 // ─── KEYBOARD ─────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (e.key === ' ' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
@@ -688,3 +971,4 @@ respawnOwnedChars();
 updateUI();
 setInterval(gameTick, 50);
 setInterval(saveGame, 10000);
+setTimeout(spawnEnemy, 20000 + Math.random() * 20000);

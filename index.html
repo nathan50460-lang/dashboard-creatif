@@ -15,10 +15,12 @@
   <!-- ── CLICKER ── -->
   <div id="clicker-area">
     <div id="ship-wrap">
-      <pre id="ship" onclick="clickShip(event)">
- 
-<span class="ship-core">✦</span> 
-</pre>
+      <pre id="ship" onclick="clickShip(event)">   /\
+  /\/\
+ / <span class="ship-core">✦</span>  \
+/______\
+  |  |
+ _|__|_</pre>
       <div id="click-particles"></div>
     </div>
     <div id="pts-display"><span id="pts">0</span> <span class="pts-unit">CYCLES</span></div>
@@ -51,6 +53,33 @@
 
 <!-- floating +N feedback -->
 <div id="global-feedback"></div>
+
+<!-- ── DETAIL PANEL ── -->
+<aside id="detail-panel">
+  <button id="detail-close" onclick="closeDetail()">[ × FERMER ]</button>
+  <div id="detail-img-wrap"><div id="detail-img-inner"></div></div>
+  <div id="detail-meta">
+    <div id="detail-name"></div>
+    <span id="detail-tag-badge"></span>
+  </div>
+  <div id="detail-story"></div>
+  <div id="detail-keys"></div>
+</aside>
+<div id="detail-backdrop" onclick="closeDetail()"></div>
+
+<!-- ── BATTLE POPUP ── -->
+<div id="battle-popup">
+  <div id="battle-inner">
+    <div id="battle-enemy-sprite"></div>
+    <div id="battle-enemy-name"></div>
+    <div id="battle-intro"></div>
+    <div id="battle-hp-bar-wrap"><div id="battle-hp-fill"></div></div>
+    <div id="battle-hp-text"></div>
+    <div id="battle-attack-log"></div>
+    <button id="battle-btn" onclick="battleClick()">[ ⚡ ATTAQUER ]</button>
+    <div id="battle-result"></div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
